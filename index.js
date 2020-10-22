@@ -13,11 +13,11 @@ The function should:
   2. Create and return an object using the received values  
 */
 
-function createMenuItem(itemName, itemPrice, itemCategory){
+function createMenuItem(name, price, category){
   const newItem = {
-    name: itemName,
-    price: itemPrice,
-    category: itemCategory,
+    name: name,
+    price: price,
+    category: category,
   }
   
   return newItem
@@ -83,8 +83,15 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console
 */
-
-
+function getFeedback(reviewer) {
+  for (const name in reviews) {
+    if(reviews.name === reviewer){
+      reviews.push(reviews.feedback);
+    }
+  }
+  return getFeedback;
+}
+  console.log(getFeedback('Julius'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -92,7 +99,11 @@ Using the reviews array above do the following:
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
+reviews = {
+  name: 'Sam',
+  rating: 5,
+  feedback: 'The food was made with high quality ingredients. Definitely recommend.',
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -133,8 +144,8 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array) {
+  return '${array[array.length - 1].name} gave the restaurant a ${array[array.lenth - 1].rating} star review, and their feedback was: ${array[array.length - 1].feedback}'
 } 
 
 
