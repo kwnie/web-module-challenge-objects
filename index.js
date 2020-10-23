@@ -53,8 +53,8 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  discount: function(string){
-    if(string === 'teacher' || string === 'student'){
+  discount(schoolDiscount){
+    if(schoolDiscount === 'teacher' || schoolDiscount === 'student'){
       this.price = this.price - (this.price * 0.25);
       return this.price;
     }
@@ -65,7 +65,7 @@ export const burger = {
   }
 }
 
-
+console.log(burger.discount("teacher"))
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -84,12 +84,11 @@ Using the reviews array above:
   1. log only Julius' feedback to the console
 */
 function getFeedback(reviewer) {
-  for (const name in reviews) {
-    if(reviews.name === reviewer){
-      reviews.push(reviews.feedback);
+  for(let i = 0; i < reviews.length; i++) {
+    if(reviews[i].name === reviewer){
+    console.log(reviews[i].feedback)
     }
   }
-  return getFeedback;
 }
   console.log(getFeedback('Julius'));
 
@@ -99,11 +98,13 @@ Using the reviews array above do the following:
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-reviews = {
-  name: 'Sam',
-  rating: 5,
-  feedback: 'The food was made with high quality ingredients. Definitely recommend.',
-}
+ function addReview(array, name, rating, feedback) {
+   array.push({name, rating, feedback});
+   return array;
+ }
+
+console.log(addReview(reviews, 'Sam', 5, 'Fresh, high-quality ingredients, definitely recommend'))
+
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -111,9 +112,14 @@ Reyna's feedback is missing! Use what you know to do the following:
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
-
-
-
+function changeReview(array, name, feedback){
+  for(let i = 0; i < array.length; i++){
+    if(array[i].name === name) {
+      reviews[i].feedback = feedback;
+    }
+  }
+}
+console.log(changeReview(reviews, 'Reyna', 'this place is chill with really cool people, great for getting work done on weekdays'))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -126,10 +132,10 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, index) {
+console.log(`${array[index].name} gave the restaurant a ${array[index].rating} star review, and their feedback was: ${array[index].feedback}`)
 }
-
+getReviewByIndex(reviews, 0)
 
   
 
@@ -147,6 +153,8 @@ Use the getLastReview function below to do the following:
 function getLastReview(array) {
   return '${array[array.length - 1].name} gave the restaurant a ${array[array.lenth - 1].rating} star review, and their feedback was: ${array[array.length - 1].feedback}'
 } 
+
+console.log(getLastReview(reviews))
 
 
 
